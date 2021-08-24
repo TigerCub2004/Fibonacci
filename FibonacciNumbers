@@ -1,0 +1,67 @@
+ * A Fibonacci sequence finder that uses recrsion to find the fibonacci number at a particular index. 
+ * This code is available for public use. Please give credit where it is due.
+ *
+ * @Yahvin gali
+ * @2/26/2021
+ */
+ 
+import java.util.*;
+public class FibonnaciNumbers
+{
+    
+    public static int fib(int n){
+        if (n == 0){
+            return 0;
+        }
+        else if (n == 1){
+            return 1;
+        }
+        else{
+            return fib(n - 1) + fib(n - 2);
+        }
+    }
+    
+    public static void main(String [ ] args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Begin? (Y/N): ");
+        String quit = input.next();
+        System.out.println();
+        if(!(quit.equalsIgnoreCase("Y"))){
+            System.out.println("Have a nice day!");
+        }
+        else{
+            while (quit.equalsIgnoreCase("Y")){ 
+                try{
+                    input = new Scanner(System.in);
+                    System.out.println("Please enter an integer number:");
+                    int n = input.nextInt();
+                    while (n < 50){
+                        System.out.println();
+                        System.out.println("The Fibonacci number is: " + fib(n));
+                        System.out.println();
+                        System.out.println("Continue? (Y/N): ");
+                        quit = input.next();
+                        System.out.println();
+                        if(!(quit.equalsIgnoreCase("Y"))){
+                            System.out.println("Have a nice day!");
+                            break;
+                        }
+                        System.out.println("Please enter an integer number:");
+                        n = input.nextInt();
+                        if(n >= 50){
+                            break;
+                        }   
+                    }
+                    if(n >= 50){
+                        System.out.println();
+                        System.out.println("Number is larger than 50. Please try again");
+                    }
+                }catch (Exception e){
+                    System.out.println();
+                    System.out.println("Input is either too long or not a number. Please try again.");
+                }
+                input.close();
+            }
+        }
+    }
+}
